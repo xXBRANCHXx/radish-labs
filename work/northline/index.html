@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-page="work" data-file-root="../..">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="description" content="Northline is an interactive Radish Labs concept: a rules-driven modular-space configurator with live planning, pricing, and specification generation." />
+    <meta property="og:title" content="Northline Configurator — Radish Labs concept" />
+    <meta property="og:description" content="A working demonstration of product configuration made clear." />
+    <meta property="og:image" content="/og-card.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../src/styles.css" />
+    <script type="module" src="../../src/main.js"></script>
+    <script>if(location.protocol==='file:')addEventListener('DOMContentLoaded',()=>{const s=document.createElement('script');s.src='../../src/main.js';document.body.appendChild(s)})</script>
+    <title>Northline Configurator — Radish Labs concept</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Radish Labs home"><img src="/brand/radish-labs-primary-white.svg" alt="Radish Labs" /></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span class="nav-toggle-label">Menu</span><span class="nav-toggle-lines" aria-hidden="true"><i></i><i></i></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-nav><a href="/work/" aria-current="page">Work</a><a href="/approach/">Approach</a><a href="/studio/">Studio</a><a class="nav-project" href="/start/">Start a project <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main id="main">
+      <section class="case-hero case-hero-northline">
+        <a class="case-back reveal" href="/work/"><span aria-hidden="true">←</span> All concept systems</a>
+        <div class="case-hero-index reveal"><span>CONCEPT 001</span><span>PUBLIC PRODUCT SYSTEM</span></div>
+        <h1 class="display reveal">NORTHLINE<br /><em>CONFIGURATOR.</em></h1>
+        <div class="case-hero-intro reveal"><p>A rules-driven buying experience for modular spaces—turning product complexity into a layout customers can understand, price, and hand to production.</p><dl><div><dt>System</dt><dd>Configurator + quote engine</dd></div><div><dt>Focus</dt><dd>Complexity made usable</dd></div><div><dt>Status</dt><dd>Self-initiated concept</dd></div></dl></div>
+      </section>
+
+      <aside class="case-disclaimer"><strong>CONCEPT PROJECT</strong><p>Northline is a fictional product context built by Radish Labs as a working capability demonstration. Pricing, lead times, and product rules are illustrative.</p></aside>
+
+      <section class="case-demo-section" aria-labelledby="northline-demo-title">
+        <div class="case-demo-heading reveal"><div><p class="section-index">WORKING PROTOTYPE / 01</p><h2 id="northline-demo-title">Configure a space.<br />Watch the system reason.</h2></div><p>Every selection updates the floor plan, cost model, delivery window, and generated specification. Try adding modules, changing the footprint, then generate the brief.</p></div>
+
+        <div class="product-demo northline-demo reveal" data-northline-demo>
+          <header class="demo-topbar"><div><strong>NORTHLINE</strong><span>CONFIGURATOR / BUILD 24</span></div><div class="demo-health"><i></i> RULE ENGINE ONLINE</div></header>
+          <div class="northline-demo-grid">
+            <form class="northline-controls" data-northline-form>
+              <fieldset><legend><span>01</span> Footprint</legend><div class="segmented-control"><label><input type="radio" name="size" value="compact" /><span>Compact<small>28 m²</small></span></label><label><input type="radio" name="size" value="standard" checked /><span>Standard<small>42 m²</small></span></label><label><input type="radio" name="size" value="extended" /><span>Extended<small>58 m²</small></span></label></div></fieldset>
+              <fieldset><legend><span>02</span> Primary use</legend><div class="segmented-control"><label><input type="radio" name="use" value="studio" checked /><span>Studio<small>Flexible work</small></span></label><label><input type="radio" name="use" value="retail" /><span>Retail<small>Customer-ready</small></span></label><label><input type="radio" name="use" value="workshop" /><span>Workshop<small>High utility</small></span></label></div></fieldset>
+              <fieldset><legend><span>03</span> Service modules</legend><div class="module-toggles"><label><input type="checkbox" name="module" value="kitchen" checked /><span><b>Kitchen</b><small>+ $14,800</small></span></label><label><input type="checkbox" name="module" value="washroom" checked /><span><b>Washroom</b><small>+ $18,600</small></span></label><label><input type="checkbox" name="module" value="storage" /><span><b>Storage wall</b><small>+ $6,200</small></span></label><label><input type="checkbox" name="module" value="solar" /><span><b>Solar pack</b><small>+ $11,400</small></span></label></div></fieldset>
+              <fieldset><legend><span>04</span> Finish system</legend><div class="finish-options"><label><input type="radio" name="finish" value="essential" /><span>Essential</span></label><label><input type="radio" name="finish" value="plus" checked /><span>Plus</span></label><label><input type="radio" name="finish" value="performance" /><span>Performance</span></label></div></fieldset>
+            </form>
+
+            <div class="northline-workspace">
+              <div class="workspace-toolbar"><div><span>PLAN VIEW</span><b data-northline-code>NL–42S–KW–P</b></div><div><button type="button" data-plan-view="plan" class="is-active">Plan</button><button type="button" data-plan-view="systems">Systems</button></div></div>
+              <div class="northline-stage" data-northline-stage data-size="standard" data-use="studio" data-view="plan">
+                <div class="dimension dimension-top"><span data-plan-width>8.4 M</span></div><div class="dimension dimension-side"><span data-plan-depth>5.0 M</span></div>
+                <div class="space-plan">
+                  <div class="plan-zone zone-main"><span data-main-label>OPEN STUDIO</span><small data-main-area>24 M²</small><i class="furniture furniture-a"></i><i class="furniture furniture-b"></i></div>
+                  <div class="plan-zone zone-entry"><span>ENTRY</span></div>
+                  <div class="plan-zone zone-kitchen" data-module-zone="kitchen"><span>KITCHEN</span><i></i><i></i><i></i></div>
+                  <div class="plan-zone zone-washroom" data-module-zone="washroom"><span>WASH</span><i></i></div>
+                  <div class="plan-zone zone-storage" data-module-zone="storage" hidden><span>STORAGE</span></div>
+                  <div class="plan-zone zone-solar" data-module-zone="solar" hidden><span>SOLAR / 4.8 KW</span></div>
+                </div>
+                <div class="systems-overlay" aria-hidden="true"><span class="system-line power">POWER</span><span class="system-line water">WATER</span><span class="system-line data">DATA</span><div class="system-key"><i></i> SERVICE SPINE / ACCESSIBLE</div></div>
+              </div>
+              <div class="constraint-feed" aria-live="polite"><span>CONSTRAINT CHECK</span><p data-constraint-message>All selected modules fit the 42 m² footprint. Wet services share one production spine.</p><strong data-constraint-status>PASS / 12 RULES</strong></div>
+            </div>
+
+            <aside class="northline-quote">
+              <div><span>LIVE ESTIMATE</span><strong data-northline-price>$108,400</strong><small>ILLUSTRATIVE / EX TAX</small></div>
+              <dl><div><dt>Footprint</dt><dd data-quote-area>42 m²</dd></div><div><dt>Build window</dt><dd data-quote-weeks>14–16 weeks</dd></div><div><dt>Energy target</dt><dd data-quote-energy>7.2 / 10</dd></div><div><dt>Configuration</dt><dd data-quote-count>4 decisions</dd></div></dl>
+              <button class="button button-red" type="button" data-generate-spec>Generate build spec <span aria-hidden="true">↗</span></button>
+              <p>Nothing is submitted. The specification is generated locally in this prototype.</p>
+            </aside>
+          </div>
+          <section class="northline-spec" data-northline-spec hidden aria-live="polite"><header><div><span>GENERATED SPECIFICATION</span><strong data-spec-reference>NL–000000</strong></div><button type="button" data-close-spec aria-label="Close specification">×</button></header><pre data-spec-output></pre><footer><button class="button button-light" type="button" data-copy-spec>Copy specification <span data-spec-copy-label>to clipboard</span></button><span>READY FOR TECHNICAL REVIEW</span></footer></section>
+        </div>
+      </section>
+
+      <section class="case-story" aria-labelledby="northline-story-title">
+        <div class="case-story-lead reveal"><p class="section-index">THE PRODUCT PROBLEM</p><h2 id="northline-story-title">A configurable product has thousands of valid versions—and even more invalid ones.</h2><p>A useful configurator cannot simply reveal options. It has to encode compatibility, preserve customer intent, explain tradeoffs, and translate the final choice into something production can act on.</p></div>
+        <div class="case-story-row reveal"><span>01 / MODEL</span><h3>One source of product truth.</h3><p>Footprints, service modules, finishes, pricing, and lead-time impacts live in one rule model instead of separate sales documents.</p></div>
+        <div class="case-story-row reveal"><span>02 / GUIDE</span><h3>Constraints become guidance.</h3><p>The interface prevents impossible combinations and explains why—without making the customer learn the underlying system.</p></div>
+        <div class="case-story-row reveal"><span>03 / HANDOFF</span><h3>The last click creates real work.</h3><p>The generated specification gives sales, engineering, and production the same configuration code and decision record.</p></div>
+      </section>
+
+      <section class="case-architecture" aria-labelledby="northline-architecture-title"><div class="section-heading reveal"><p class="section-index">SYSTEM ANATOMY</p><h2 id="northline-architecture-title">Four products<br />working as <em>one.</em></h2></div><div class="architecture-line reveal"><article><span>01</span><h3>Product model</h3><p>Structured variants, dependencies, prices, and manufacturing constraints.</p></article><i>→</i><article><span>02</span><h3>Constraint engine</h3><p>Continuous compatibility checks with human-readable explanations.</p></article><i>→</i><article><span>03</span><h3>Visual planner</h3><p>A plan that translates abstract choices into spatial consequences.</p></article><i>→</i><article><span>04</span><h3>Spec generator</h3><p>A deterministic, shareable record for the next team in the chain.</p></article></div></section>
+
+      <nav class="case-pagination" aria-label="Concept case studies"><a href="/work/"><span>INDEX</span><strong>All concept systems</strong></a><a href="/work/atlas/"><span>NEXT / 002</span><strong>Atlas Dispatch →</strong></a></nav>
+    </main>
+
+    <footer class="site-footer"><div class="footer-brand"><img src="/brand/radish-labs-primary-white.svg" alt="Radish Labs" /></div><p>Build beyond pretty.</p><nav aria-label="Footer"><a href="/work/">Work</a><a href="/approach/">Approach</a><a href="/studio/">Studio</a><a href="/start/">Start a project</a></nav><div class="footer-meta"><span>Independent product studio</span><span>© <span data-year></span> Radish Labs</span></div></footer>
+  </body>
+</html>

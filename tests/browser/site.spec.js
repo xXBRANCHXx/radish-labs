@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
-const routes = ['/', '/work/', '/approach/', '/studio/', '/start/'];
+const routes = ['/', '/work/', '/work/northline/', '/work/atlas/', '/work/relay/', '/approach/', '/studio/', '/start/'];
 
 for (const route of routes) {
   test(`${route} renders without browser errors or horizontal overflow`, async ({ page }) => {
@@ -54,6 +56,50 @@ test('the home system finder updates the recommendation and brief link', async (
   await expect(page.locator('[data-finder-option="admin"]')).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('the homepage capability strip moves left in direct response to scroll', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'networkidle' });
+  const track = page.locator('[data-scroll-marquee-track]');
+  const before = await track.evaluate((node) => getComputedStyle(node).transform);
+  await page.evaluate(() => window.scrollTo(0, 900));
+  await expect.poll(() => track.evaluate((node) => getComputedStyle(node).transform)).not.toBe(before);
+});
+
+test('Northline recalculates the configuration and generates a specification', async ({ page }) => {
+  await page.goto('/work/northline/', { waitUntil: 'networkidle' });
+  await page.locator('input[name="size"][value="extended"]').check();
+  await page.locator('input[name="use"][value="workshop"]').check();
+  await page.locator('input[name="module"][value="solar"]').check();
+  await expect(page.locator('[data-northline-price]')).toHaveText('$154,800');
+  await expect(page.locator('[data-northline-code]')).toContainText('58W');
+  await page.locator('[data-generate-spec]').click();
+  await expect(page.locator('[data-northline-spec]')).toBeVisible();
+  await expect(page.locator('[data-spec-output]')).toContainText('Solar pack');
+  await expect(page.locator('[data-spec-output]')).toContainText('$154,800');
+});
+
+test('Atlas keeps the mission, map, status, and optimization state synchronized', async ({ page }) => {
+  await page.goto('/work/atlas/', { waitUntil: 'networkidle' });
+  await page.locator('[data-mission="power"]').click();
+  await expect(page.locator('[data-atlas-title]')).toHaveText('Power relay replacement');
+  await expect(page.locator('[data-route="power"]')).not.toHaveAttribute('hidden', '');
+  await page.locator('[data-atlas-advance]').click();
+  await expect(page.locator('[data-atlas-status]')).toHaveText('En route');
+  await page.locator('[data-atlas-optimize]').click();
+  await expect(page.locator('[data-atlas-risk]')).toHaveText('01');
+  await expect(page.locator('[data-atlas-optimization]')).toContainText('19 min recovered');
+});
+
+test('Relay runs an explainable multi-stage workflow to completion', async ({ page }) => {
+  await page.goto('/work/relay/', { waitUntil: 'networkidle' });
+  await page.locator('[data-relay-scenario]').selectOption('change');
+  await expect(page.locator('[data-relay-flow-name]')).toHaveText('HIGH-VALUE CHANGE REQUEST');
+  await page.locator('[data-relay-run]').click();
+  await expect(page.locator('[data-relay-outcome]')).toBeVisible({ timeout: 7000 });
+  await expect(page.locator('[data-relay-run-status]')).toHaveText('COMPLETE');
+  await expect(page.locator('[data-relay-stage].is-complete')).toHaveCount(5);
+  await expect(page.locator('[data-relay-log]')).toContainText('Workflow completed without an unhandled exception');
+});
+
 test('the project brief builder validates, generates, copies, and downloads locally', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: 'http://127.0.0.1:4173' });
   await page.goto('/start/?goal=admin', { waitUntil: 'networkidle' });
@@ -86,4 +132,22 @@ test('the project brief builder validates, generates, copies, and downloads loca
   await page.locator('[data-download-brief]').click();
   const download = await downloadPromise;
   expect(download.suggestedFilename()).toBe('radish-labs-brief-example-works.txt');
+});
+
+test('the source site works when index.html is opened directly through file://', async ({ page }) => {
+  const fileUrl = pathToFileURL(resolve(import.meta.dirname, '../../index.html')).href;
+  await page.goto(fileUrl, { waitUntil: 'load' });
+  await expect.poll(() => page.locator('html').evaluate((node) => node.classList.contains('js'))).toBe(true);
+
+  await expect(page.locator('h1')).toBeVisible();
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(5, 5, 5)');
+  await expect.poll(() => page.locator('.brand img').evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
+
+  await page.locator('[data-finder-option="admin"]').click();
+  await expect(page.locator('[data-finder-title]')).toHaveText('Operations tool');
+
+  await page.locator('.site-nav a[href*="work/index.html"]').click();
+  await expect(page).toHaveURL(/\/work\/index\.html$/);
+  await expect(page.locator('h1')).toContainText('WORKING PROOF');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(5, 5, 5)');
 });

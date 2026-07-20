@@ -7,6 +7,9 @@ const root = resolve(import.meta.dirname, '..');
 const pages = [
   ['home', 'index.html'],
   ['work', 'work/index.html'],
+  ['northline', 'work/northline/index.html'],
+  ['atlas', 'work/atlas/index.html'],
+  ['relay', 'work/relay/index.html'],
   ['approach', 'approach/index.html'],
   ['studio', 'studio/index.html'],
   ['start', 'start/index.html']
@@ -14,7 +17,7 @@ const pages = [
 
 const read = (path) => readFileSync(resolve(root, path), 'utf8');
 
-test('all five pages have essential document structure and unique titles', () => {
+test('all pages have essential document structure and unique titles', () => {
   const titles = new Set();
 
   for (const [name, path] of pages) {
@@ -79,7 +82,30 @@ test('the site makes no fabricated proof claims', () => {
   assert.doesNotMatch(html, /\b\d{2,}(\.\d+)?%\s*(uptime|growth|conversion|satisfaction)\b/i);
   assert.doesNotMatch(html, /class="testimonial/i);
   assert.match(read('studio/index.html'), /None yet\. We will add them when they are earned\./);
-  assert.match(read('work/index.html'), /EXAMPLE BUILD \/ NOT A CASE STUDY/);
+  assert.match(read('work/index.html'), /Real software thinking\.\s*<br \/>Fictional project contexts\./);
+  for (const path of ['work/northline/index.html', 'work/atlas/index.html', 'work/relay/index.html']) {
+    assert.match(read(path), /CONCEPT PROJECT/);
+    assert.match(read(path), /fictional/i);
+  }
+});
+
+test('the supplied primary white SVG is used as the visible brand lockup', () => {
+  for (const [, path] of pages) {
+    assert.match(read(path), /class="brand"[^>]*>[\s\S]*?radish-labs-primary-white\.svg/);
+  }
+  const logo = read('public/brand/radish-labs-primary-white.svg');
+  assert.match(logo, /stroke="#ffffff"/);
+  assert.match(logo, />RADISH</);
+  assert.match(logo, />LABS</);
+});
+
+test('the three concept systems expose real interactive controls', () => {
+  assert.match(read('work/northline/index.html'), /data-northline-demo/);
+  assert.match(read('work/northline/index.html'), /data-generate-spec/);
+  assert.match(read('work/atlas/index.html'), /data-atlas-demo/);
+  assert.match(read('work/atlas/index.html'), /data-atlas-optimize/);
+  assert.match(read('work/relay/index.html'), /data-relay-demo/);
+  assert.match(read('work/relay/index.html'), /data-relay-run/);
 });
 
 test('the project brief builder is private-by-design and functional', () => {
