@@ -14,12 +14,16 @@ The design uses the supplied Radish Labs duck mark and brand red (`#d8344e`) wit
 
 ## Run locally
 
+The easiest option is:
+
 ```bash
 npm install
-npm run dev
+npm start
 ```
 
-Open the local URL printed by Vite.
+This starts Vite and opens the site in your browser. `npm run dev` is also available when you do not want the browser to open automatically.
+
+For a quick no-server preview, you can also double-click the root `index.html`. The site detects the `file://` protocol, loads its local assets, and rewrites navigation between the five HTML pages. Use Vite for final development and production testing.
 
 ## Verify and build
 

@@ -1,5 +1,30 @@
 document.documentElement.classList.add('js');
 
+const isFilePreview = window.location.protocol === 'file:';
+const fileRoot = document.documentElement.dataset.fileRoot || '.';
+
+function resolveSiteHref(value) {
+  if (!isFilePreview || !value.startsWith('/')) return value;
+  const match = value.match(/^([^?#]*)(.*)$/);
+  let path = match?.[1] || '/';
+  const suffix = match?.[2] || '';
+  if (path === '/') path = '/index.html';
+  else if (path.endsWith('/')) path += 'index.html';
+  return `${fileRoot}${path}${suffix}`;
+}
+
+if (isFilePreview) {
+  document.querySelectorAll('a[href^="/"]').forEach((link) => {
+    link.setAttribute('href', resolveSiteHref(link.getAttribute('href')));
+  });
+  document.querySelectorAll('img[src^="/"]').forEach((image) => {
+    image.setAttribute('src', `${fileRoot}/public${image.getAttribute('src')}`);
+  });
+  document.querySelectorAll('link[href^="/"]').forEach((link) => {
+    link.setAttribute('href', `${fileRoot}/public${link.getAttribute('href')}`);
+  });
+}
+
 const currentYear = new Date().getFullYear();
 document.querySelectorAll('[data-year]').forEach((node) => {
   node.textContent = String(currentYear);
@@ -133,7 +158,7 @@ if (finder) {
         );
         node.textContent = data[field];
       });
-      result.link.href = `/start/?goal=${key}`;
+      result.link.href = resolveSiteHref(`/start/?goal=${key}`);
     });
   });
 }

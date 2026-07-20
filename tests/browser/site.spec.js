@@ -1,4 +1,6 @@
 import { expect, test } from '@playwright/test';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const routes = ['/', '/work/', '/approach/', '/studio/', '/start/'];
 
@@ -86,4 +88,22 @@ test('the project brief builder validates, generates, copies, and downloads loca
   await page.locator('[data-download-brief]').click();
   const download = await downloadPromise;
   expect(download.suggestedFilename()).toBe('radish-labs-brief-example-works.txt');
+});
+
+test('the source site works when index.html is opened directly through file://', async ({ page }) => {
+  const fileUrl = pathToFileURL(resolve(import.meta.dirname, '../../index.html')).href;
+  await page.goto(fileUrl, { waitUntil: 'load' });
+  await expect.poll(() => page.locator('html').evaluate((node) => node.classList.contains('js'))).toBe(true);
+
+  await expect(page.locator('h1')).toBeVisible();
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(5, 5, 5)');
+  await expect.poll(() => page.locator('.brand img').evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
+
+  await page.locator('[data-finder-option="admin"]').click();
+  await expect(page.locator('[data-finder-title]')).toHaveText('Operations tool');
+
+  await page.locator('.site-nav a[href*="work/index.html"]').click();
+  await expect(page).toHaveURL(/\/work\/index\.html$/);
+  await expect(page.locator('h1')).toContainText('WORKBENCH');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(5, 5, 5)');
 });
