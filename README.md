@@ -7,7 +7,10 @@ The design uses the supplied Radish Labs duck mark and brand red (`#d8344e`) wit
 ## Pages
 
 - `/` — positioning, capabilities, and an interactive system finder
-- `/work/` — build types and clearly labelled example systems
+- `/work/` — three clearly labelled, self-initiated concept systems
+- `/work/northline/` — a working modular-space configurator and specification engine
+- `/work/atlas/` — a synchronized field-operations command center
+- `/work/relay/` — an explainable workflow automation simulator
 - `/approach/` — delivery method, principles, and engagement shapes
 - `/studio/` — the studio story, honest early-stage ledger, values, and FAQ
 - `/start/` — a four-step, browser-only project brief builder with copy, download, and email-draft actions

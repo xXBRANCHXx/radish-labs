@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-page="work" data-file-root="../..">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="description" content="Atlas Dispatch is an interactive Radish Labs concept: a field-operations command center for jobs, teams, route risk, and service deadlines." />
+    <meta property="og:title" content="Atlas Dispatch — Radish Labs concept" />
+    <meta property="og:description" content="A working command center for fast operational decisions." />
+    <meta property="og:image" content="/og-card.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../src/styles.css" />
+    <script type="module" src="../../src/main.js"></script>
+    <script>if(location.protocol==='file:')addEventListener('DOMContentLoaded',()=>{const s=document.createElement('script');s.src='../../src/main.js';document.body.appendChild(s)})</script>
+    <title>Atlas Dispatch — Radish Labs concept</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Radish Labs home"><img src="/brand/radish-labs-primary-white.svg" alt="Radish Labs" /></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span class="nav-toggle-label">Menu</span><span class="nav-toggle-lines" aria-hidden="true"><i></i><i></i></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-nav><a href="/work/" aria-current="page">Work</a><a href="/approach/">Approach</a><a href="/studio/">Studio</a><a class="nav-project" href="/start/">Start a project <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main id="main">
+      <section class="case-hero">
+        <a class="case-back reveal" href="/work/"><span aria-hidden="true">←</span> All concept systems</a>
+        <div class="case-hero-index reveal"><span>CONCEPT 002</span><span>INTERNAL OPERATIONS TOOL</span></div>
+        <h1 class="display reveal">ATLAS<br /><em>DISPATCH.</em></h1>
+        <div class="case-hero-intro reveal"><p>A live decision surface for field operations—bringing jobs, people, route conditions, exceptions, and service deadlines into one coordinated view.</p><dl><div><dt>System</dt><dd>Operations command center</dd></div><div><dt>Focus</dt><dd>Fast, accountable decisions</dd></div><div><dt>Status</dt><dd>Self-initiated concept</dd></div></dl></div>
+      </section>
+
+      <aside class="case-disclaimer"><strong>CONCEPT PROJECT</strong><p>Atlas is a fictional operating environment built by Radish Labs as a working capability demonstration. Missions, teams, locations, and performance data are simulated.</p></aside>
+
+      <section class="case-demo-section" aria-labelledby="atlas-demo-title">
+        <div class="case-demo-heading reveal"><div><p class="section-index">WORKING PROTOTYPE / 02</p><h2 id="atlas-demo-title">Run the board.<br />Recover the day.</h2></div><p>Select a mission, inspect its constraints, advance it through the field, or optimize the whole board. The system maintains one operational state across every view.</p></div>
+
+        <div class="product-demo atlas-demo reveal" data-atlas-demo>
+          <header class="demo-topbar"><div><strong>ATLAS</strong><span>METRO FIELD OPS / MON 11:42</span></div><div class="demo-health"><i></i> LIVE SIMULATION</div></header>
+          <div class="atlas-metrics"><div><span>ACTIVE MISSIONS</span><strong data-atlas-active>14</strong><small>Across 4 service zones</small></div><div><span>AT RISK</span><strong data-atlas-risk>03</strong><small data-atlas-risk-copy>2 recoverable routes</small></div><div><span>FIELD CAPACITY</span><strong data-atlas-capacity>78%</strong><small>11 of 14 teams assigned</small></div><div><span>SLA HEALTH</span><strong data-atlas-sla>92.4%</strong><small>Rolling 30-day window</small></div></div>
+          <div class="atlas-demo-grid">
+            <section class="atlas-mission-panel" aria-label="Mission queue">
+              <header><div><span>MISSION QUEUE</span><b>PRIORITY ORDER</b></div><button type="button" data-atlas-filter aria-pressed="false">Critical only</button></header>
+              <div class="atlas-mission-list" data-atlas-list>
+                <button type="button" class="atlas-mission is-selected" data-mission="cold-chain" data-priority="critical"><span class="mission-id">FS–2047</span><span class="mission-priority critical">CRITICAL</span><strong>Cold-chain sensor fault</strong><small>Docklands Distribution · SLA 00:46</small><i>→</i></button>
+                <button type="button" class="atlas-mission" data-mission="lift" data-priority="high"><span class="mission-id">FS–2039</span><span class="mission-priority high">HIGH</span><strong>Lift safety inspection</strong><small>North Quarter · SLA 01:18</small><i>→</i></button>
+                <button type="button" class="atlas-mission" data-mission="power" data-priority="high"><span class="mission-id">FS–2034</span><span class="mission-priority high">HIGH</span><strong>Power relay replacement</strong><small>East Market · SLA 01:42</small><i>→</i></button>
+                <button type="button" class="atlas-mission" data-mission="access" data-priority="normal"><span class="mission-id">FS–2028</span><span class="mission-priority normal">NORMAL</span><strong>Access control recalibration</strong><small>Civic South · SLA 03:12</small><i>→</i></button>
+                <button type="button" class="atlas-mission" data-mission="water" data-priority="critical"><span class="mission-id">FS–2021</span><span class="mission-priority critical">CRITICAL</span><strong>Pressure loss investigation</strong><small>West Foundry · SLA 00:58</small><i>→</i></button>
+              </div>
+            </section>
+
+            <section class="atlas-map-panel" aria-label="Simulated dispatch map">
+              <header><span>LIVE SERVICE GRID</span><div><i class="legend-team"></i> TEAM <i class="legend-job"></i> MISSION</div></header>
+              <div class="atlas-map">
+                <svg viewBox="0 0 760 520" role="img" aria-label="Simulated route network with teams and missions">
+                  <g class="atlas-grid-lines"><path d="M20 70H740M20 170H740M20 270H740M20 370H740M20 470H740"/><path d="M100 20V500M230 20V500M380 20V500M540 20V500M675 20V500"/></g>
+                  <g class="atlas-secondary-routes"><path d="M25 450L150 365L250 410L390 335L535 380L730 270"/><path d="M70 110L210 155L335 95L500 140L650 80"/><path d="M95 270L215 235L345 285L475 215L625 245L720 185"/></g>
+                  <g class="atlas-live-route" data-route="cold-chain"><path d="M85 445L165 365L265 405L360 285L505 230L660 115"/><circle cx="85" cy="445" r="8"/><circle class="route-team" cx="360" cy="285" r="10"/><circle class="route-target" cx="660" cy="115" r="15"/></g>
+                  <g class="atlas-live-route" data-route="lift" hidden><path d="M685 455L590 390L505 330L410 235L250 175L125 105"/><circle cx="685" cy="455" r="8"/><circle class="route-team" cx="410" cy="235" r="10"/><circle class="route-target" cx="125" cy="105" r="15"/></g>
+                  <g class="atlas-live-route" data-route="power" hidden><path d="M80 120L180 175L300 150L415 245L545 310L685 265"/><circle cx="80" cy="120" r="8"/><circle class="route-team" cx="415" cy="245" r="10"/><circle class="route-target" cx="685" cy="265" r="15"/></g>
+                  <g class="atlas-live-route" data-route="access" hidden><path d="M105 455L210 385L325 420L470 350L570 410"/><circle cx="105" cy="455" r="8"/><circle class="route-team" cx="325" cy="420" r="10"/><circle class="route-target" cx="570" cy="410" r="15"/></g>
+                  <g class="atlas-live-route" data-route="water" hidden><path d="M700 90L615 150L520 130L420 205L315 285L160 260"/><circle cx="700" cy="90" r="8"/><circle class="route-team" cx="420" cy="205" r="10"/><circle class="route-target" cx="160" cy="260" r="15"/></g>
+                </svg>
+                <div class="atlas-zone-labels" aria-hidden="true"><span>WEST FOUNDRY</span><span>NORTH QUARTER</span><span>DOCKLANDS</span><span>CIVIC SOUTH</span></div>
+                <div class="map-eta"><span>SELECTED ROUTE</span><strong data-atlas-eta>18 MIN</strong><small data-atlas-distance>6.4 KM / LIGHT TRAFFIC</small></div>
+              </div>
+              <div class="atlas-map-actions"><button class="button button-red" type="button" data-atlas-optimize>Optimize board <span aria-hidden="true">↗</span></button><span data-atlas-optimization>3 route conflicts detected</span></div>
+            </section>
+
+            <aside class="atlas-detail-panel">
+              <header><span>MISSION DETAIL</span><strong data-atlas-id>FS–2047</strong></header>
+              <div class="atlas-detail-title"><span class="mission-priority critical" data-atlas-priority>CRITICAL</span><h3 data-atlas-title>Cold-chain sensor fault</h3><p data-atlas-location>Docklands Distribution / Bay 04</p></div>
+              <dl><div><dt>Assigned team</dt><dd data-atlas-team>Team 07 / I. Malik</dd></div><div><dt>Required skill</dt><dd data-atlas-skill>Refrigeration L3</dd></div><div><dt>Current state</dt><dd data-atlas-status>Dispatched</dd></div><div><dt>SLA remaining</dt><dd data-atlas-sla-time>00:46</dd></div></dl>
+              <div class="mission-checklist"><span>FIELD CHECKLIST</span><label><input type="checkbox" checked disabled /> Safety brief confirmed</label><label><input type="checkbox" data-atlas-check /> Site contact notified</label><label><input type="checkbox" data-atlas-check /> Replacement part verified</label></div>
+              <button class="button button-light" type="button" data-atlas-advance>Advance mission <span aria-hidden="true">→</span></button>
+            </aside>
+          </div>
+          <footer class="atlas-event-feed"><span>OPERATIONS FEED</span><div data-atlas-events><p><time>11:42:08</time> FS–2047 escalated after second sensor breach.</p><p><time>11:41:32</time> Team 07 accepted route assignment.</p><p><time>11:40:51</time> Traffic model updated Docklands corridor +4 min.</p></div></footer>
+        </div>
+      </section>
+
+      <section class="case-story" aria-labelledby="atlas-story-title">
+        <div class="case-story-lead reveal"><p class="section-index">THE OPERATING PROBLEM</p><h2 id="atlas-story-title">A dispatch board is a machine for making promises under pressure.</h2><p>The challenge is not displaying every data point. It is helping the operator see which promise is at risk, what can still be changed, and who needs to know—before the situation becomes an incident.</p></div>
+        <div class="case-story-row reveal"><span>01 / PRIORITIZE</span><h3>Urgency is computed, not colored in.</h3><p>Mission priority combines safety, SLA exposure, customer impact, team fit, and travel conditions into one explainable order.</p></div>
+        <div class="case-story-row reveal"><span>02 / COORDINATE</span><h3>Every view shares one state.</h3><p>Queue, map, mission detail, team capacity, and event feed update together so operators never reconcile five versions of the truth.</p></div>
+        <div class="case-story-row reveal"><span>03 / RECOVER</span><h3>The system looks for the next best move.</h3><p>Route optimization is framed as a recoverability tool: protect the critical promise without quietly breaking three others.</p></div>
+      </section>
+
+      <section class="case-architecture" aria-labelledby="atlas-architecture-title"><div class="section-heading reveal"><p class="section-index">SYSTEM ANATOMY</p><h2 id="atlas-architecture-title">Dense enough for ops.<br />Calm enough for <em>11:42.</em></h2></div><div class="architecture-line reveal"><article><span>01</span><h3>Event ingestion</h3><p>Jobs, telemetry, team status, SLA clocks, and traffic arrive as one normalized stream.</p></article><i>→</i><article><span>02</span><h3>Priority model</h3><p>Explainable operational risk scores update whenever conditions move.</p></article><i>→</i><article><span>03</span><h3>Decision surface</h3><p>Queue, map, details, and actions maintain shared selection and state.</p></article><i>→</i><article><span>04</span><h3>Audit trail</h3><p>Every assignment, override, and state change remains visible after the rush.</p></article></div></section>
+
+      <nav class="case-pagination" aria-label="Concept case studies"><a href="/work/northline/"><span>PREVIOUS / 001</span><strong>← Northline</strong></a><a href="/work/relay/"><span>NEXT / 003</span><strong>Relay Workflow OS →</strong></a></nav>
+    </main>
+
+    <footer class="site-footer"><div class="footer-brand"><img src="/brand/radish-labs-primary-white.svg" alt="Radish Labs" /></div><p>Build beyond pretty.</p><nav aria-label="Footer"><a href="/work/">Work</a><a href="/approach/">Approach</a><a href="/studio/">Studio</a><a href="/start/">Start a project</a></nav><div class="footer-meta"><span>Independent product studio</span><span>© <span data-year></span> Radish Labs</span></div></footer>
+  </body>
+</html>

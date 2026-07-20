@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 620" role="img" aria-labelledby="title desc">
+  <title id="title">Radish Labs primary logo inverse</title>
+  <desc id="desc">Radish the duck with the Radish Labs wordmark in white.</desc>
+  <g transform="translate(30 0) scale(.82)" fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M174 382C166 264 211 145 305 119C388 96 463 177 474 333"/>
+    <path d="M437 137V96"/>
+    <path d="M451 135L500 91"/>
+    <path d="M458 151H510"/>
+    <path d="M174 377C230 361 277 354 320 354C407 354 479 366 526 389C574 412 590 438 574 463C549 502 447 526 320 526C193 526 91 502 66 463C50 438 66 412 114 389C132 380 152 374 174 368"/>
+    <path d="M220 515C242 562 258 608 263 658"/>
+    <path d="M420 515C398 562 382 608 377 658"/>
+  </g>
+  <g fill="#ffffff" font-family="Inter, Arial, sans-serif">
+    <text x="620" y="300" font-size="178" font-weight="620" letter-spacing="-4">RADISH</text>
+    <text x="625" y="425" font-size="72" font-weight="500" letter-spacing="29">LABS</text>
+  </g>
+</svg>

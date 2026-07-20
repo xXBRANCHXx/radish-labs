@@ -7,6 +7,9 @@ export default defineConfig({
       input: {
         home: resolve(import.meta.dirname, 'index.html'),
         work: resolve(import.meta.dirname, 'work/index.html'),
+        northline: resolve(import.meta.dirname, 'work/northline/index.html'),
+        atlas: resolve(import.meta.dirname, 'work/atlas/index.html'),
+        relay: resolve(import.meta.dirname, 'work/relay/index.html'),
         approach: resolve(import.meta.dirname, 'approach/index.html'),
         studio: resolve(import.meta.dirname, 'studio/index.html'),
         start: resolve(import.meta.dirname, 'start/index.html')
