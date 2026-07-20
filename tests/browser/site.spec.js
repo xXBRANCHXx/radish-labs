@@ -1,0 +1,89 @@
+import { expect, test } from '@playwright/test';
+
+const routes = ['/', '/work/', '/approach/', '/studio/', '/start/'];
+
+for (const route of routes) {
+  test(`${route} renders without browser errors or horizontal overflow`, async ({ page }) => {
+    const pageErrors = [];
+    page.on('pageerror', (error) => pageErrors.push(error.message));
+
+    await page.goto(route, { waitUntil: 'networkidle' });
+    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('.site-header')).toBeVisible();
+
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(1);
+    expect(pageErrors).toEqual([]);
+  });
+}
+
+test('every page is usable at a narrow mobile viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+
+  for (const route of routes) {
+    await page.goto(route, { waitUntil: 'networkidle' });
+    await expect(page.locator('h1')).toBeVisible();
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow, `${route} overflows the mobile viewport`).toBeLessThanOrEqual(1);
+  }
+});
+
+test('the mobile navigation opens, closes, and stays inside the viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/', { waitUntil: 'networkidle' });
+
+  const toggle = page.locator('[data-nav-toggle]');
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('[data-nav]')).toHaveClass(/is-open/);
+  await expect(page.locator('[data-nav] a[href="/work/"]')).toBeVisible();
+
+  await page.keyboard.press('Escape');
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+});
+
+test('the home system finder updates the recommendation and brief link', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.locator('[data-finder-option="admin"]').click();
+
+  await expect(page.locator('[data-finder-title]')).toHaveText('Operations tool');
+  await expect(page.locator('[data-finder-shape]')).toHaveText('Internal web application');
+  await expect(page.locator('[data-finder-link]')).toHaveAttribute('href', '/start/?goal=admin');
+  await expect(page.locator('[data-finder-option="admin"]')).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('the project brief builder validates, generates, copies, and downloads locally', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: 'http://127.0.0.1:4173' });
+  await page.goto('/start/?goal=admin', { waitUntil: 'networkidle' });
+
+  await expect(page.locator('input[name="goal"]:checked')).toHaveValue('Replace a manual internal workflow');
+  await page.locator('[data-step="1"] [data-next]').click();
+  await page.locator('input[name="pressure"]').first().check();
+  await page.locator('[data-step="2"] [data-next]').click();
+
+  await page.locator('select[name="timing"]').selectOption({ label: 'Within 1–2 months' });
+  await page.locator('select[name="budget"]').selectOption({ label: 'Full custom build' });
+  await page.locator('textarea[name="context"]').fill('Orders are copied between three spreadsheets and nobody can see which handoff is currently blocked.');
+  await page.locator('[data-step="3"] [data-next]').click();
+
+  await page.locator('input[name="name"]').fill('Ari Example');
+  await page.locator('input[name="company"]').fill('Example Works');
+  await page.locator('input[name="email"]').fill('ari@example.com');
+  await page.locator('[data-step="4"] button[type="submit"]').click();
+
+  const result = page.locator('[data-brief-result]');
+  await expect(result).toBeVisible();
+  await expect(page.locator('[data-brief-output]')).toContainText('Example Works');
+  await expect(page.locator('[data-brief-output]')).toContainText('Replace a manual internal workflow');
+  await expect(page.locator('[data-email-brief]')).toHaveAttribute('href', /^mailto:\?subject=/);
+
+  await page.locator('[data-copy-brief]').click();
+  await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain('RADISH LABS / PROJECT BRIEF');
+
+  const downloadPromise = page.waitForEvent('download');
+  await page.locator('[data-download-brief]').click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toBe('radish-labs-brief-example-works.txt');
+});

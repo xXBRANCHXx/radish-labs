@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" data-page="start">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="description" content="Turn your bottleneck into a clear project brief for Radish Labs." />
+    <meta property="og:title" content="Start a project — Radish Labs" />
+    <meta property="og:description" content="Name the problem. Leave with a useful brief." />
+    <meta property="og:image" content="/og-card.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+    <title>Start a project — Radish Labs</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Radish Labs home"><img src="/brand/radish-mark-white.svg" alt="" /><span>RADISH<br />LABS</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span class="nav-toggle-label">Menu</span><span class="nav-toggle-lines" aria-hidden="true"><i></i><i></i></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-nav><a href="/work/">Work</a><a href="/approach/">Approach</a><a href="/studio/">Studio</a><a class="nav-project" href="/start/" aria-current="page">Start a project <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main id="main">
+      <section class="start-hero ruled">
+        <div class="page-hero-meta reveal"><span>PROJECT BRIEF BUILDER</span><span>TAKES ABOUT 3 MINUTES</span></div>
+        <h1 class="display start-display reveal">NAME WHAT IS<br /><em>NOT WORKING.</em></h1>
+        <p class="reveal">Answer a few useful questions. You will leave with a structured brief you can copy, download, or open in your email app — no form endpoint or personal data collection required.</p>
+      </section>
+
+      <section class="brief-section" aria-labelledby="brief-title">
+        <div class="brief-sidebar reveal"><p class="section-index">YOUR BRIEF</p><h2 id="brief-title">Start with the job,<br />not the feature list.</h2><p>Nothing you enter is sent anywhere. The brief is created entirely in your browser.</p><div class="brief-progress" aria-hidden="true"><span data-progress-label>01 / 04</span><div><i data-progress-bar></i></div></div></div>
+
+        <form class="brief-form reveal" data-brief-form>
+          <fieldset class="form-step" data-step="1">
+            <legend><span>01</span>What needs to move?</legend>
+            <p>Choose the closest version. You can add nuance later.</p>
+            <div class="choice-grid">
+              <label><input type="radio" name="goal" value="Launch or rebuild a public website" required /><span><i>01</i><strong>Launch or rebuild</strong><small>A public website with a real job</small></span></label>
+              <label><input type="radio" name="goal" value="Replace a manual internal workflow" /><span><i>02</i><strong>Replace manual work</strong><small>A tool for the way the team operates</small></span></label>
+              <label><input type="radio" name="goal" value="Connect tools and automate handoffs" /><span><i>03</i><strong>Connect the gaps</strong><small>Automation between existing tools</small></span></label>
+              <label><input type="radio" name="goal" value="Shape and ship a new digital product" /><span><i>04</i><strong>Ship a product</strong><small>A focused first useful version</small></span></label>
+            </div>
+            <div class="step-actions"><span></span><button class="button button-red" type="button" data-next>Continue <i aria-hidden="true">→</i></button></div>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="2" hidden>
+            <legend><span>02</span>What is making it urgent?</legend>
+            <p>Select every pressure that is true.</p>
+            <div class="check-list">
+              <label><input type="checkbox" name="pressure" value="The current experience is costing qualified opportunities" /><span>We are losing good opportunities</span></label>
+              <label><input type="checkbox" name="pressure" value="The team is spending too much time on repetitive admin" /><span>The team is buried in repetitive work</span></label>
+              <label><input type="checkbox" name="pressure" value="The current system is unreliable or difficult to maintain" /><span>The current system is fragile</span></label>
+              <label><input type="checkbox" name="pressure" value="A new offer, market, or deadline needs a credible launch" /><span>A launch or deadline is approaching</span></label>
+              <label><input type="checkbox" name="pressure" value="Important information is scattered across too many tools" /><span>Information is scattered</span></label>
+            </div>
+            <div class="step-actions"><button class="button button-ghost" type="button" data-back>Back</button><button class="button button-red" type="button" data-next>Continue <i aria-hidden="true">→</i></button></div>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="3" hidden>
+            <legend><span>03</span>Give it some edges.</legend>
+            <div class="field-row">
+              <label class="field"><span>Ideal timing</span><select name="timing" required><option value="">Choose one</option><option>As soon as the right plan is clear</option><option>Within 1–2 months</option><option>Within 3–6 months</option><option>Exploring for later</option></select></label>
+              <label class="field"><span>Investment range</span><select name="budget" required><option value="">Choose one</option><option>Still defining the right investment</option><option>Focused starter scope</option><option>Full custom build</option><option>Ongoing product partnership</option></select></label>
+            </div>
+            <label class="field"><span>What happens today, and where does it get stuck?</span><textarea name="context" rows="6" required minlength="20" placeholder="A concrete example is more useful than a feature list..."></textarea></label>
+            <div class="step-actions"><button class="button button-ghost" type="button" data-back>Back</button><button class="button button-red" type="button" data-next>Continue <i aria-hidden="true">→</i></button></div>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="4" hidden>
+            <legend><span>04</span>Put a name on it.</legend>
+            <p>These details only appear in the brief you generate.</p>
+            <div class="field-row">
+              <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required placeholder="Name" /></label>
+              <label class="field"><span>Company or project</span><input type="text" name="company" autocomplete="organization" required placeholder="Company" /></label>
+            </div>
+            <label class="field"><span>Email for the brief</span><input type="email" name="email" autocomplete="email" required placeholder="you@company.com" /></label>
+            <div class="step-actions"><button class="button button-ghost" type="button" data-back>Back</button><button class="button button-red" type="submit">Create my brief <i aria-hidden="true">↗</i></button></div>
+          </fieldset>
+        </form>
+
+        <section class="brief-result" data-brief-result hidden aria-live="polite" aria-labelledby="result-title">
+          <div class="result-header"><div><p class="micro-label">PROJECT BRIEF / GENERATED LOCALLY</p><h2 id="result-title">A useful place to begin.</h2></div><button class="result-close" type="button" data-edit-brief>Edit answers</button></div>
+          <pre data-brief-output></pre>
+          <div class="result-actions"><button class="button button-light" type="button" data-copy-brief>Copy brief <span data-copy-label>to clipboard</span></button><button class="button button-outline" type="button" data-download-brief>Download .txt</button><a class="button button-outline" href="#" data-email-brief>Open email draft</a></div>
+          <p class="result-note">The email draft has no preset recipient, so you stay in control of where the brief goes.</p>
+        </section>
+      </section>
+
+      <section class="start-note ruled"><span>NOT READY FOR A FORM?</span><p>That is useful information too. Start by writing one sentence: “Every week, we lose time when…”</p></section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-brand"><img src="/brand/radish-mark-white.svg" alt="" /><span>RADISH LABS</span></div><p>Build beyond pretty.</p><nav aria-label="Footer"><a href="/work/">Work</a><a href="/approach/">Approach</a><a href="/studio/">Studio</a><a href="/start/">Start a project</a></nav><div class="footer-meta"><span>Independent product studio</span><span>© <span data-year></span> Radish Labs</span></div></footer>
+  </body>
+</html>
